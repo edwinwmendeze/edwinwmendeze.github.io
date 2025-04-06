@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio - Cargando...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Variables y reset */
         :root {
-            --primary-color: #3a86ff;
-            --secondary-color: #8338ec;
-            --text-color: #333;
-            --light-text: #666;
-            --background: #fff;
-            --light-background: #f8f9fa;
-            --border-color: #e0e0e0;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --border-radius: 8px;
-            --transition: all 0.3s ease;
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #8b5cf6;
+            --dark: #1f2937;
+            --light-dark: #4b5563;
+            --light: #f9fafb;
+            --light-gray: #e5e7eb;
+            --white: #ffffff;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 12px;
         }
         
         * {
@@ -27,68 +30,167 @@
         }
         
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-            color: var(--text-color);
-            background-color: var(--background);
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.7;
         }
         
-        /* Layout */
+        /* Estableciendo ancho máximo */
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
         
-        /* Header */
-        header {
-            padding: 2rem 0;
-            background-color: var(--light-background);
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
         
-        .header-content {
+        .navbar-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
             gap: 2rem;
         }
         
-        .profile-info h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
         }
         
-        .profile-info p {
-            font-size: 1.2rem;
-            color: var(--light-text);
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            padding: 5rem 0;
+            min-height: calc(100vh - 70px);
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .hero-description {
+            margin-bottom: 2rem;
+            color: var(--light-dark);
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
         }
         
         .profile-image {
-            width: 180px;
-            height: 180px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--primary-color);
+            border: 4px solid var(--white);
             box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
         }
         
-        /* Sections */
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            color: var(--primary);
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .social-link i {
+            font-size: 1.2rem;
+        }
+        
+        /* Section Common Styles */
         section {
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        section:last-of-type {
-            border-bottom: none;
+            padding: 5rem 0;
         }
         
         .section-title {
-            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
             position: relative;
             display: inline-block;
         }
@@ -96,59 +198,97 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            height: 4px;
             width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            bottom: -8px;
+            left: 0;
+            background: var(--primary);
+            border-radius: 2px;
         }
         
-        /* About */
-        .about-content {
+        .section-subtitle {
+            color: var(--light-dark);
+            margin-bottom: 3rem;
+        }
+        
+        /* About Section */
+        .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
         
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .about-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
         }
         
-        .contact-item {
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .about-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         
-        .contact-item i {
-            color: var(--primary-color);
-            font-size: 1.1rem;
+        .about-card-title i {
+            color: var(--primary);
         }
         
-        /* Skills */
+        /* Skills Section */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
         }
         
-        .skill-category {
-            background-color: var(--light-background);
+        .skill-card {
+            background: var(--white);
             padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
         
-        .skill-category:hover {
+        .skill-card:hover {
             transform: translateY(-5px);
         }
         
-        .skill-category h3 {
+        .skill-card h3 {
+            font-size: 1.2rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .skill-type {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            background-color: var(--light-gray);
+            color: var(--light-dark);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .skill-type.hard {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+        }
+        
+        .skill-type.soft {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: var(--secondary);
         }
         
         .skill-tags {
@@ -158,64 +298,80 @@
         }
         
         .skill-tag {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            background-color: var(--light);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
             font-weight: 500;
+            color: var(--light-dark);
+            border: 1px solid var(--light-gray);
         }
         
-        /* Education */
-        .education-item {
-            background-color: var(--light-background);
-            padding: 1.5rem;
+        /* Education Section */
+        .education-card {
+            background: var(--white);
+            padding: 2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
+            margin-bottom: 2rem;
+            position: relative;
+            transition: transform 0.3s ease;
         }
         
-        .education-item:hover {
+        .education-card:hover {
             transform: translateY(-5px);
         }
         
-        .education-item h3 {
+        .education-card h3 {
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--primary-color);
+            color: var(--dark);
         }
         
-        .education-dates {
-            font-size: 0.9rem;
-            color: var(--light-text);
-            margin-bottom: 0.5rem;
+        .education-period {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
         }
         
-        /* Projects */
-        .projects-container {
+        /* Projects Section */
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
         }
         
         .project-card {
-            background-color: var(--light-background);
+            background: var(--white);
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            transition: transform 0.3s ease;
+            position: relative;
             display: flex;
             flex-direction: column;
             height: 100%;
         }
         
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
         }
         
-        .project-card.featured {
-            border-top: 3px solid var(--secondary-color);
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 2;
         }
         
         .project-content {
@@ -226,33 +382,29 @@
         }
         
         .project-title {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .featured-badge {
-            background-color: var(--secondary-color);
-            color: white;
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            color: var(--dark);
         }
         
         .project-description {
+            color: var(--light-dark);
             margin-bottom: 1rem;
             flex-grow: 1;
         }
         
         .project-highlights {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .project-highlights ul {
             padding-left: 1.5rem;
+        }
+        
+        .project-highlights li {
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
         }
         
         .project-tech {
@@ -260,63 +412,95 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-top: auto;
+            margin-bottom: 1rem;
         }
         
-        .tech-tag {
-            background-color: rgba(58, 134, 255, 0.1);
-            color: var(--primary-color);
-            padding: 0.2rem 0.6rem;
+        .tech-badge {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.6rem;
             border-radius: 4px;
             font-size: 0.8rem;
+            font-weight: 500;
         }
         
         .project-link {
-            display: block;
-            text-align: center;
-            padding: 0.8rem;
-            background-color: var(--light-background);
-            color: var(--primary-color);
+            background-color: var(--primary);
+            color: var(--white);
             text-decoration: none;
+            padding: 0.8rem;
+            text-align: center;
             font-weight: 500;
-            border-top: 1px solid var(--border-color);
-            transition: var(--transition);
+            transition: background-color 0.3s ease;
+            margin-top: auto;
         }
         
         .project-link:hover {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--primary-dark);
         }
         
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+        /* Contact Info Section */
+        .contact-info {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
         }
         
-        .social-link {
+        .contact-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text {
+            font-size: 0.95rem;
+        }
+        
+        .contact-text a {
+            color: var(--primary);
             text-decoration: none;
-            color: var(--text-color);
-            transition: var(--transition);
+            transition: color 0.3s ease;
         }
         
-        .social-link:hover {
-            color: var(--primary-color);
-        }
-        
-        .social-link i {
-            font-size: 1.5rem;
+        .contact-text a:hover {
+            color: var(--primary-dark);
         }
         
         /* Footer */
         footer {
-            background-color: var(--light-background);
+            background-color: var(--dark);
+            color: var(--light);
             padding: 2rem 0;
-            text-align: center;
-            color: var(--light-text);
+            margin-top: 5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-text {
+            font-size: 0.9rem;
         }
         
         /* Loading */
@@ -326,48 +510,93 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         
         .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(58, 134, 255, 0.3);
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(37, 99, 235, 0.1);
             border-radius: 50%;
-            border-top-color: var(--primary-color);
-            animation: spin 1s infinite ease-in-out;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
         }
         
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
         
-        /* Error */
-        .error-message {
-            background-color: #ffcccb;
-            color: #d8000c;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            margin: 1rem 0;
+        .loading-text {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 500;
         }
         
-        /* Responsive */
+        .error-message {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: #fee2e2;
+            color: #b91c1c;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        /* Media Queries */
         @media (max-width: 768px) {
-            .header-content {
+            .navbar-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero {
                 flex-direction: column-reverse;
                 text-align: center;
+                padding: 3rem 0;
+                gap: 2rem;
             }
             
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .profile-info h1 {
+            .hero-title {
                 font-size: 2rem;
             }
             
-            .projects-container {
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .section-title, .section-subtitle {
+                text-align: center;
+            }
+            
+            .section-title {
+                display: block;
+            }
+            
+            .about-grid, .skills-container, .projects-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .contact-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
         }
     </style>
@@ -376,7 +605,7 @@
     <div id="app">
         <div class="loading">
             <div class="loading-spinner"></div>
-            <p>Cargando portafolio...</p>
+            <p class="loading-text">Cargando portafolio...</p>
         </div>
     </div>
 
@@ -384,10 +613,7 @@
         // URL del archivo JSON en GitHub
         const DATA_URL = 'https://raw.githubusercontent.com/edwinwmendeze/nrc-23731/refs/heads/main/grupo-a/src/data/profiles/PepePino.json';
         
-        // Elemento principal donde se renderizará el contenido
-        const app = document.getElementById('app');
-        
-        // Función para formatear fechas
+        // Formatear fechas
         function formatDate(dateString) {
             if (!dateString) return '';
             
@@ -396,7 +622,7 @@
             return date.toLocaleDateString('es-ES', options);
         }
         
-        // Función para obtener el ícono de redes sociales
+        // Obtener icono para redes sociales
         function getSocialIcon(network) {
             const icons = {
                 'GitHub': 'fab fa-github',
@@ -405,15 +631,18 @@
                 'Instagram': 'fab fa-instagram',
                 'Facebook': 'fab fa-facebook',
                 'YouTube': 'fab fa-youtube',
-                'Twitch': 'fab fa-twitch',
-                'CodePen': 'fab fa-codepen',
-                'Dev.to': 'fab fa-dev',
-                'Medium': 'fab fa-medium',
-                'StackOverflow': 'fab fa-stack-overflow',
-                'Personal': 'fas fa-globe'
+                'Dribbble': 'fab fa-dribbble',
+                'Behance': 'fab fa-behance'
             };
             
             return icons[network] || 'fas fa-link';
+        }
+        
+        // Obtener icono para tipo de habilidad
+        function getSkillTypeIcon(type) {
+            if (type === 'hard') return 'fas fa-code';
+            if (type === 'soft') return 'fas fa-users';
+            return 'fas fa-star';
         }
         
         // Cargar los datos del portafolio
@@ -430,151 +659,208 @@
                 
             } catch (error) {
                 console.error('Error:', error);
-                app.innerHTML = `
-                    <div class="container">
-                        <div class="error-message">
-                            <h2>Error al cargar el portafolio</h2>
-                            <p>${error.message}</p>
-                        </div>
+                document.getElementById('app').innerHTML = `
+                    <div class="error-message">
+                        <h2>Error al cargar el portafolio</h2>
+                        <p>${error.message}</p>
+                        <p>Por favor, intenta nuevamente más tarde.</p>
                     </div>
                 `;
             }
         }
         
-        // Renderizar el portafolio con los datos recibidos
+        // Renderizar el portafolio
         function renderPortfolio(data) {
             const { basics, skills, education, projects } = data;
+            document.title = `Portafolio | ${basics.name} ${basics.last_name}`;
             
-            // Cambiar el título de la página
-            document.title = `Portafolio - ${basics.name} ${basics.last_name}`;
-            
-            // Construir el HTML del portafolio
             const portfolioHTML = `
-                <header>
-                    <div class="container header-content">
-                        <div class="profile-info">
-                            <h1>${basics.name} ${basics.last_name}</h1>
-                            <p>${basics.label}</p>
-                            <div class="social-links">
-                                ${basics.profiles.map(profile => `
-                                    <a href="${profile.url}" target="_blank" class="social-link">
-                                        <i class="${getSocialIcon(profile.network)}"></i>
-                                        <span>${profile.network}</span>
-                                    </a>
-                                `).join('')}
-                            </div>
+                <nav class="navbar">
+                    <div class="container navbar-container">
+                        <div class="logo">${basics.name.charAt(0)}${basics.last_name.split(' ')[0].charAt(0)}</div>
+                        <div class="nav-links">
+                            <a href="#about" class="nav-link">Sobre mí</a>
+                            <a href="#skills" class="nav-link">Habilidades</a>
+                            <a href="#education" class="nav-link">Educación</a>
+                            <a href="#projects" class="nav-link">Proyectos</a>
+                            <a href="#contact" class="nav-link">Contacto</a>
                         </div>
-                        <img src="${basics.image.remote || basics.image.local}" alt="${basics.name} ${basics.last_name}" class="profile-image">
                     </div>
-                </header>
+                </nav>
                 
-                <main class="container">
-                    <section id="about">
-                        <h2 class="section-title">Sobre mí</h2>
-                        <div class="about-content">
-                            <div class="summary">
-                                <p>${basics.summary}</p>
-                                <p style="margin-top: 1rem;">
-                                    <i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i>
-                                    ${basics.location.city}, ${basics.location.region} (${basics.location.countryCode})
-                                </p>
-                            </div>
-                            <div class="contact-info">
-                                <div class="contact-item">
-                                    <i class="fas fa-envelope"></i>
-                                    <a href="mailto:${basics.email}">${basics.email}</a>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-phone"></i>
-                                    <a href="tel:${basics.phone}">${basics.phone}</a>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-globe"></i>
-                                    <a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a>
-                                </div>
-                            </div>
+                <section class="container hero">
+                    <div class="hero-content">
+                        <h1 class="hero-title">${basics.name} ${basics.last_name}</h1>
+                        <h2 class="hero-subtitle">${basics.label}</h2>
+                        <p class="hero-description">${basics.summary}</p>
+                        
+                        <div class="social-links">
+                            ${basics.profiles.map(profile => `
+                                <a href="${profile.url}" target="_blank" class="social-link" title="${profile.network}">
+                                    <i class="${getSocialIcon(profile.network)}"></i>
+                                </a>
+                            `).join('')}
                         </div>
-                    </section>
+                    </div>
+                    <div class="hero-image">
+                        <img src="${basics.image.remote || basics.image.local}" alt="${basics.name}" class="profile-image">
+                    </div>
+                </section>
+                
+                <section id="about" class="container">
+                    <h2 class="section-title">Sobre mí</h2>
+                    <p class="section-subtitle">Conoce más sobre mi perfil profesional y datos de contacto</p>
                     
-                    <section id="skills">
-                        <h2 class="section-title">Habilidades</h2>
-                        <div class="skills-container">
-                            ${skills.map(skill => `
-                                <div class="skill-category">
-                                    <h3>${skill.name}</h3>
-                                    <div class="skill-tags">
-                                        ${skill.keywords.map(keyword => `
-                                            <span class="skill-tag">${keyword}</span>
+                    <div class="about-grid">
+                        <div class="about-card">
+                            <h3 class="about-card-title"><i class="fas fa-user"></i> Perfil</h3>
+                            <p>${basics.summary}</p>
+                        </div>
+                        
+                        <div class="about-card">
+                            <h3 class="about-card-title"><i class="fas fa-map-marker-alt"></i> Ubicación</h3>
+                            <p>${basics.location.city}, ${basics.location.region}</p>
+                            <p>País: ${basics.location.countryCode}</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="skills" class="container">
+                    <h2 class="section-title">Habilidades</h2>
+                    <p class="section-subtitle">Mis conocimientos técnicos y habilidades blandas</p>
+                    
+                    <div class="skills-container">
+                        ${skills.map(skill => `
+                            <div class="skill-card">
+                                <h3>
+                                    <span><i class="${getSkillTypeIcon(skill.type)}"></i> ${skill.name}</span>
+                                    <span class="skill-type ${skill.type}">${skill.type}</span>
+                                </h3>
+                                <div class="skill-tags">
+                                    ${skill.keywords.map(keyword => `
+                                        <span class="skill-tag">${keyword}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+                
+                <section id="education" class="container">
+                    <h2 class="section-title">Educación</h2>
+                    <p class="section-subtitle">Mi formación académica</p>
+                    
+                    ${education.map(edu => `
+                        <div class="education-card">
+                            <h3>${edu.institution}</h3>
+                            <span class="education-period">${formatDate(edu.startDate)} - ${formatDate(edu.endDate)}</span>
+                            <p>${edu.studyType} en ${edu.area}</p>
+                        </div>
+                    `).join('')}
+                </section>
+                
+                <section id="projects" class="container">
+                    <h2 class="section-title">Proyectos</h2>
+                    <p class="section-subtitle">Trabajos destacados y proyectos recientes</p>
+                    
+                    <div class="projects-grid">
+                        ${projects.map(project => `
+                            <div class="project-card">
+                                ${project.featured ? '<span class="project-badge">Destacado</span>' : ''}
+                                <div class="project-content">
+                                    <h3 class="project-title">${project.name}</h3>
+                                    <p class="project-description">${project.description}</p>
+                                    
+                                    <div class="project-highlights">
+                                        <ul>
+                                            ${project.highlights.map(highlight => `
+                                                <li>${highlight}</li>
+                                            `).join('')}
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="project-tech">
+                                        ${project.technologies.map(tech => `
+                                            <span class="tech-badge">${tech}</span>
                                         `).join('')}
                                     </div>
                                 </div>
-                            `).join('')}
-                        </div>
-                    </section>
-                    
-                    <section id="education">
-                        <h2 class="section-title">Educación</h2>
-                        ${education.map(edu => `
-                            <div class="education-item">
-                                <h3>${edu.institution}</h3>
-                                <div class="education-dates">
-                                    ${formatDate(edu.startDate)} - ${formatDate(edu.endDate)}
-                                </div>
-                                <p>${edu.studyType} en ${edu.area}</p>
+                                <a href="${project.url}" target="_blank" class="project-link">Ver proyecto</a>
                             </div>
                         `).join('')}
-                    </section>
+                    </div>
+                </section>
+                
+                <section id="contact" class="container">
+                    <h2 class="section-title">Contacto</h2>
+                    <p class="section-subtitle">¿Tienes algún proyecto en mente? ¡Hablemos!</p>
                     
-                    <section id="projects">
-                        <h2 class="section-title">Proyectos</h2>
-                        <div class="projects-container">
-                            ${projects.map(project => `
-                                <div class="project-card ${project.featured ? 'featured' : ''}">
-                                    <div class="project-content">
-                                        <div class="project-title">
-                                            <h3>${project.name}</h3>
-                                            ${project.featured ? '<span class="featured-badge">Destacado</span>' : ''}
-                                        </div>
-                                        <div class="project-description">
-                                            <p>${project.description}</p>
-                                        </div>
-                                        <div class="project-highlights">
-                                            <ul>
-                                                ${project.highlights.map(highlight => `
-                                                    <li>${highlight}</li>
-                                                `).join('')}
-                                            </ul>
-                                        </div>
-                                        <div class="project-tech">
-                                            ${project.technologies.map(tech => `
-                                                <span class="tech-tag">${tech}</span>
-                                            `).join('')}
-                                        </div>
-                                    </div>
-                                    <a href="${project.url}" target="_blank" class="project-link">
-                                        Ver proyecto <i class="fas fa-external-link-alt"></i>
-                                    </a>
+                    <div class="contact-info">
+                        <div class="contact-list">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
                                 </div>
-                            `).join('')}
+                                <div class="contact-text">
+                                    <strong>Email</strong>
+                                    <p><a href="mailto:${basics.email}">${basics.email}</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>Teléfono</strong>
+                                    <p><a href="tel:${basics.phone}">${basics.phone}</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>Sitio Web</strong>
+                                    <p><a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>Ubicación</strong>
+                                    <p>${basics.location.city}, ${basics.location.region}</p>
+                                </div>
+                            </div>
                         </div>
-                    </section>
-                </main>
+                    </div>
+                </section>
                 
                 <footer>
-                    <div class="container">
-                        <p>&copy; ${new Date().getFullYear()} ${basics.name} ${basics.last_name}. Todos los derechos reservados.</p>
+                    <div class="container footer-content">
+                        <p class="footer-text">&copy; ${new Date().getFullYear()} ${basics.name} ${basics.last_name}. Todos los derechos reservados.</p>
+                        <div class="social-links">
+                            ${basics.profiles.map(profile => `
+                                <a href="${profile.url}" target="_blank" class="social-link" title="${profile.network}">
+                                    <i class="${getSocialIcon(profile.network)}"></i>
+                                </a>
+                            `).join('')}
+                        </div>
                     </div>
                 </footer>
             `;
             
-            app.innerHTML = portfolioHTML;
+            document.getElementById('app').innerHTML = portfolioHTML;
         }
         
         // Iniciar la carga del portafolio
         loadPortfolioData();
         
-        // Actualizar datos periódicamente para mantener el portafolio actualizado
-        // (cada 5 minutos, ajusta según tus necesidades)
+        // Actualizar periódicamente
         setInterval(loadPortfolioData, 5 * 60 * 1000);
     </script>
 </body>
