@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio - Cargando...</title>
+    <title>Portafolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-light: #3b82f6;
-            --primary-dark: #1e40af;
-            --secondary: #8b5cf6;
-            --dark: #1f2937;
-            --light-dark: #4b5563;
-            --light: #f9fafb;
-            --light-gray: #e5e7eb;
-            --white: #ffffff;
-            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --border-radius: 12px;
+            --background: #fafafa;
+            --text: #222;
+            --subtle-text: #555;
+            --lightest-text: #888;
+            --accent: #4f46e5;
+            --accent-light: #ebe9ff;
+            --border: #eaeaea;
+            --card-bg: #fff;
+            --max-width: 960px;
+            --spacing-unit: 8px;
         }
         
         * {
@@ -30,243 +28,136 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            background-color: var(--light);
-            line-height: 1.7;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
         }
         
-        /* Estableciendo ancho máximo */
         .container {
-            max-width: 1000px;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 calc(var(--spacing-unit) * 3);
         }
         
-        /* Navbar */
-        .navbar {
-            position: sticky;
-            top: 0;
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 1rem 0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-        
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-link {
+        a {
+            color: var(--accent);
             text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
+            transition: color 0.2s ease;
         }
         
-        .nav-link:hover {
-            color: var(--primary);
+        a:hover {
+            color: var(--text);
         }
         
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
         }
         
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            padding: 5rem 0;
-            min-height: calc(100vh - 70px);
-        }
-        
-        .hero-content {
-            flex: 1;
-        }
-        
-        .hero-title {
+        h1 {
             font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
             line-height: 1.2;
-            color: var(--dark);
         }
         
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .hero-description {
-            margin-bottom: 2rem;
-            color: var(--light-dark);
-        }
-        
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .profile-image {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--white);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-        
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--white);
-            color: var(--primary);
-            border-radius: 50%;
-            text-decoration: none;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background-color: var(--primary);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-        
-        .social-link i {
-            font-size: 1.2rem;
-        }
-        
-        /* Section Common Styles */
-        section {
-            padding: 5rem 0;
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark);
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: calc(var(--spacing-unit) * 6);
             position: relative;
-            display: inline-block;
         }
         
-        .section-title::after {
-            content: '';
+        h2:after {
+            content: "";
             position: absolute;
-            height: 4px;
-            width: 50px;
-            bottom: -8px;
+            width: 30px;
+            height: 1px;
+            background-color: var(--accent);
+            bottom: -12px;
             left: 0;
-            background: var(--primary);
-            border-radius: 2px;
         }
         
-        .section-subtitle {
-            color: var(--light-dark);
-            margin-bottom: 3rem;
-        }
-        
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .about-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-        
-        .about-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .about-card-title {
+        h3 {
             font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
         }
         
-        .about-card-title i {
-            color: var(--primary);
+        /* Layout */
+        .section {
+            padding: calc(var(--spacing-unit) * 12) 0;
         }
         
-        /* Skills Section */
-        .skills-container {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: calc(var(--spacing-unit) * 4);
         }
         
-        .skill-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+        .two-columns {
+            grid-template-columns: repeat(2, 1fr);
         }
         
-        .skill-card:hover {
-            transform: translateY(-5px);
+        .three-columns {
+            grid-template-columns: repeat(3, 1fr);
         }
         
-        .skill-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
+        /* Header & Intro */
+        header {
+            padding: calc(var(--spacing-unit) * 20) 0;
+        }
+        
+        .intro {
+            max-width: 700px;
+        }
+        
+        .intro h1 {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+        
+        .title-caption {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 400;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        .intro-description {
+            margin-bottom: calc(var(--spacing-unit) * 5);
+            font-size: 1.05rem;
+            max-width: 600px;
+            color: var(--subtle-text);
+        }
+        
+        .profile-info {
+            margin-top: calc(var(--spacing-unit) * 8);
+            display: flex;
+            gap: calc(var(--spacing-unit) * 6);
+            color: var(--subtle-text);
+        }
+        
+        .profile-info-item {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+        
+        .profile-info-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: calc(var(--spacing-unit) * 1);
+            color: var(--lightest-text);
+        }
+        
+        /* Skills */
+        .skill-category {
+            margin-bottom: calc(var(--spacing-unit) * 6);
+        }
+        
+        .skill-title {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -275,250 +166,156 @@
         .skill-type {
             font-size: 0.7rem;
             text-transform: uppercase;
-            background-color: var(--light-gray);
-            color: var(--light-dark);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
+            letter-spacing: 1px;
+            color: var(--lightest-text);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
         }
         
-        .skill-type.hard {
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-        }
-        
-        .skill-type.soft {
-            background-color: rgba(139, 92, 246, 0.1);
-            color: var(--secondary);
-        }
-        
-        .skill-tags {
+        .skill-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: calc(var(--spacing-unit) * 2);
+            margin-top: calc(var(--spacing-unit) * 2);
         }
         
-        .skill-tag {
-            background-color: var(--light);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
+        .skill-item {
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
             font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--light-dark);
-            border: 1px solid var(--light-gray);
         }
         
-        /* Education Section */
-        .education-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            position: relative;
-            transition: transform 0.3s ease;
+        /* Education */
+        .education-item {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: calc(var(--spacing-unit) * 4);
+            margin-bottom: calc(var(--spacing-unit) * 4);
         }
         
-        .education-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .education-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
+        .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
         }
         
         .education-period {
-            display: inline-block;
-            background-color: var(--primary-light);
-            color: var(--white);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--lightest-text);
+            margin-top: calc(var(--spacing-unit) * 1);
         }
         
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background: var(--white);
-            border-radius: var(--border-radius);
+        /* Projects */
+        .project-item {
+            border: 1px solid var(--border);
+            background-color: var(--card-bg);
+            border-radius: 2px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+            transition: transform 0.2s ease;
         }
         
-        .project-card:hover {
-            transform: translateY(-8px);
-        }
-        
-        .project-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 0.3rem 0.7rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            z-index: 2;
+        .project-item:hover {
+            transform: translateY(-4px);
         }
         
         .project-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            padding: calc(var(--spacing-unit) * 4);
         }
         
         .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.7rem;
-            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        .project-badge {
+            font-size: 0.7rem;
+            color: var(--accent);
+            background-color: var(--accent-light);
+            padding: 2px 8px;
+            border-radius: 2px;
         }
         
         .project-description {
-            color: var(--light-dark);
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-        
-        .project-highlights {
-            margin-bottom: 1.5rem;
-        }
-        
-        .project-highlights ul {
-            padding-left: 1.5rem;
-        }
-        
-        .project-highlights li {
-            margin-bottom: 0.3rem;
-            font-size: 0.9rem;
-        }
-        
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: auto;
-            margin-bottom: 1rem;
-        }
-        
-        .tech-badge {
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .project-link {
-            background-color: var(--primary);
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.8rem;
-            text-align: center;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            margin-top: auto;
-        }
-        
-        .project-link:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        /* Contact Info Section */
-        .contact-info {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-        
-        .contact-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .contact-icon {
-            width: 45px;
-            height: 45px;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-        
-        .contact-text {
+            color: var(--subtle-text);
+            margin-bottom: calc(var(--spacing-unit) * 3);
             font-size: 0.95rem;
         }
         
-        .contact-text a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .project-highlights {
+            margin-bottom: calc(var(--spacing-unit) * 3);
         }
         
-        .contact-text a:hover {
-            color: var(--primary-dark);
+        .project-highlights ul {
+            padding-left: calc(var(--spacing-unit) * 3);
+            color: var(--subtle-text);
+            font-size: 0.9rem;
+        }
+        
+        .project-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: calc(var(--spacing-unit) * 1);
+            margin-top: calc(var(--spacing-unit) * 3);
+        }
+        
+        .project-tech {
+            font-size: 0.75rem;
+            color: var(--lightest-text);
+        }
+        
+        .project-tech:not(:last-child)::after {
+            content: "•";
+            margin-left: calc(var(--spacing-unit) * 1);
+        }
+        
+        .project-link {
+            display: block;
+            padding: calc(var(--spacing-unit) * 2);
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .project-link:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 3);
+            margin-top: calc(var(--spacing-unit) * 5);
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: var(--light);
-            padding: 2rem 0;
-            margin-top: 5rem;
+            border-top: 1px solid var(--border);
+            padding: calc(var(--spacing-unit) * 8) 0;
+            color: var(--lightest-text);
+            font-size: 0.85rem;
         }
         
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .footer-text {
-            font-size: 0.9rem;
-        }
-        
-        /* Loading */
+        /* Loading State */
         .loading {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: calc(var(--spacing-unit) * 3);
         }
         
-        .loading-spinner {
-            width: 48px;
-            height: 48px;
-            border: 5px solid rgba(37, 99, 235, 0.1);
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-light);
             border-radius: 50%;
-            border-top-color: var(--primary);
+            border-top-color: var(--accent);
             animation: spin 1s linear infinite;
         }
         
@@ -526,77 +323,23 @@
             to { transform: rotate(360deg); }
         }
         
-        .loading-text {
-            font-size: 1.1rem;
-            color: var(--primary);
-            font-weight: 500;
-        }
-        
-        .error-message {
-            max-width: 600px;
-            margin: 2rem auto;
-            background-color: #fee2e2;
-            color: #b91c1c;
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-        }
-        
         /* Media Queries */
         @media (max-width: 768px) {
-            .navbar-container {
-                flex-direction: column;
-                gap: 1rem;
+            .two-columns, .three-columns {
+                grid-template-columns: 1fr;
             }
             
-            .nav-links {
-                gap: 1rem;
+            header {
+                padding: calc(var(--spacing-unit) * 10) 0;
             }
             
-            .hero {
-                flex-direction: column-reverse;
-                text-align: center;
-                padding: 3rem 0;
-                gap: 2rem;
-            }
-            
-            .hero-title {
+            h1 {
                 font-size: 2rem;
             }
             
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .social-links {
-                justify-content: center;
-            }
-            
-            .section-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .section-title, .section-subtitle {
-                text-align: center;
-            }
-            
-            .section-title {
-                display: block;
-            }
-            
-            .about-grid, .skills-container, .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
+            .profile-info {
                 flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+                gap: calc(var(--spacing-unit) * 3);
             }
         }
     </style>
@@ -604,13 +347,13 @@
 <body>
     <div id="app">
         <div class="loading">
-            <div class="loading-spinner"></div>
-            <p class="loading-text">Cargando portafolio...</p>
+            <div class="loader"></div>
+            <p>Cargando portafolio...</p>
         </div>
     </div>
 
     <script>
-        // URL del archivo JSON en GitHub
+        // URL del archivo JSON
         const DATA_URL = 'https://raw.githubusercontent.com/edwinwmendeze/nrc-23731/refs/heads/main/grupo-a/src/data/profiles/PepePino.json';
         
         // Formatear fechas
@@ -622,30 +365,7 @@
             return date.toLocaleDateString('es-ES', options);
         }
         
-        // Obtener icono para redes sociales
-        function getSocialIcon(network) {
-            const icons = {
-                'GitHub': 'fab fa-github',
-                'LinkedIn': 'fab fa-linkedin',
-                'Twitter': 'fab fa-twitter',
-                'Instagram': 'fab fa-instagram',
-                'Facebook': 'fab fa-facebook',
-                'YouTube': 'fab fa-youtube',
-                'Dribbble': 'fab fa-dribbble',
-                'Behance': 'fab fa-behance'
-            };
-            
-            return icons[network] || 'fas fa-link';
-        }
-        
-        // Obtener icono para tipo de habilidad
-        function getSkillTypeIcon(type) {
-            if (type === 'hard') return 'fas fa-code';
-            if (type === 'soft') return 'fas fa-users';
-            return 'fas fa-star';
-        }
-        
-        // Cargar los datos del portafolio
+        // Cargar datos del portafolio
         async function loadPortfolioData() {
             try {
                 const response = await fetch(DATA_URL);
@@ -660,10 +380,9 @@
             } catch (error) {
                 console.error('Error:', error);
                 document.getElementById('app').innerHTML = `
-                    <div class="error-message">
+                    <div class="container" style="padding-top: 100px; text-align: center;">
                         <h2>Error al cargar el portafolio</h2>
-                        <p>${error.message}</p>
-                        <p>Por favor, intenta nuevamente más tarde.</p>
+                        <p style="color: var(--subtle-text);">${error.message}</p>
                     </div>
                 `;
             }
@@ -672,184 +391,121 @@
         // Renderizar el portafolio
         function renderPortfolio(data) {
             const { basics, skills, education, projects } = data;
-            document.title = `Portafolio | ${basics.name} ${basics.last_name}`;
+            document.title = `${basics.name} ${basics.last_name} | Portafolio`;
             
             const portfolioHTML = `
-                <nav class="navbar">
-                    <div class="container navbar-container">
-                        <div class="logo">${basics.name.charAt(0)}${basics.last_name.split(' ')[0].charAt(0)}</div>
-                        <div class="nav-links">
-                            <a href="#about" class="nav-link">Sobre mí</a>
-                            <a href="#skills" class="nav-link">Habilidades</a>
-                            <a href="#education" class="nav-link">Educación</a>
-                            <a href="#projects" class="nav-link">Proyectos</a>
-                            <a href="#contact" class="nav-link">Contacto</a>
+                <header>
+                    <div class="container">
+                        <div class="intro">
+                            <p class="title-caption">${basics.label}</p>
+                            <h1>${basics.name} ${basics.last_name}</h1>
+                            <p class="intro-description">${basics.summary}</p>
+                            
+                            <div class="social-links">
+                                ${basics.profiles.map(profile => `
+                                    <a href="${profile.url}" target="_blank">${profile.network}</a>
+                                `).join('')}
+                            </div>
+                            
+                            <div class="profile-info">
+                                <div>
+                                    <div class="profile-info-item">
+                                        <p class="profile-info-label">Email</p>
+                                        <a href="mailto:${basics.email}">${basics.email}</a>
+                                    </div>
+                                    <div class="profile-info-item">
+                                        <p class="profile-info-label">Teléfono</p>
+                                        <a href="tel:${basics.phone}">${basics.phone}</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="profile-info-item">
+                                        <p class="profile-info-label">Web</p>
+                                        <a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a>
+                                    </div>
+                                    <div class="profile-info-item">
+                                        <p class="profile-info-label">Ubicación</p>
+                                        <p>${basics.location.city}, ${basics.location.region}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </nav>
+                </header>
                 
-                <section class="container hero">
-                    <div class="hero-content">
-                        <h1 class="hero-title">${basics.name} ${basics.last_name}</h1>
-                        <h2 class="hero-subtitle">${basics.label}</h2>
-                        <p class="hero-description">${basics.summary}</p>
-                        
-                        <div class="social-links">
-                            ${basics.profiles.map(profile => `
-                                <a href="${profile.url}" target="_blank" class="social-link" title="${profile.network}">
-                                    <i class="${getSocialIcon(profile.network)}"></i>
-                                </a>
+                <main>
+                    <section id="skills" class="section">
+                        <div class="container">
+                            <h2>Habilidades</h2>
+                            <div class="grid two-columns">
+                                ${skills.map(skill => `
+                                    <div class="skill-category">
+                                        <div class="skill-title">
+                                            <h3>${skill.name}</h3>
+                                            <span class="skill-type">${skill.type}</span>
+                                        </div>
+                                        <div class="skill-list">
+                                            ${skill.keywords.map(keyword => `
+                                                <span class="skill-item">${keyword}</span>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="education" class="section" style="background-color: var(--card-bg);">
+                        <div class="container">
+                            <h2>Educación</h2>
+                            ${education.map(edu => `
+                                <div class="education-item">
+                                    <h3>${edu.institution}</h3>
+                                    <p>${edu.studyType} en ${edu.area}</p>
+                                    <p class="education-period">${formatDate(edu.startDate)} — ${formatDate(edu.endDate)}</p>
+                                </div>
                             `).join('')}
                         </div>
-                    </div>
-                    <div class="hero-image">
-                        <img src="${basics.image.remote || basics.image.local}" alt="${basics.name}" class="profile-image">
-                    </div>
-                </section>
-                
-                <section id="about" class="container">
-                    <h2 class="section-title">Sobre mí</h2>
-                    <p class="section-subtitle">Conoce más sobre mi perfil profesional y datos de contacto</p>
+                    </section>
                     
-                    <div class="about-grid">
-                        <div class="about-card">
-                            <h3 class="about-card-title"><i class="fas fa-user"></i> Perfil</h3>
-                            <p>${basics.summary}</p>
-                        </div>
-                        
-                        <div class="about-card">
-                            <h3 class="about-card-title"><i class="fas fa-map-marker-alt"></i> Ubicación</h3>
-                            <p>${basics.location.city}, ${basics.location.region}</p>
-                            <p>País: ${basics.location.countryCode}</p>
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="skills" class="container">
-                    <h2 class="section-title">Habilidades</h2>
-                    <p class="section-subtitle">Mis conocimientos técnicos y habilidades blandas</p>
-                    
-                    <div class="skills-container">
-                        ${skills.map(skill => `
-                            <div class="skill-card">
-                                <h3>
-                                    <span><i class="${getSkillTypeIcon(skill.type)}"></i> ${skill.name}</span>
-                                    <span class="skill-type ${skill.type}">${skill.type}</span>
-                                </h3>
-                                <div class="skill-tags">
-                                    ${skill.keywords.map(keyword => `
-                                        <span class="skill-tag">${keyword}</span>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </section>
-                
-                <section id="education" class="container">
-                    <h2 class="section-title">Educación</h2>
-                    <p class="section-subtitle">Mi formación académica</p>
-                    
-                    ${education.map(edu => `
-                        <div class="education-card">
-                            <h3>${edu.institution}</h3>
-                            <span class="education-period">${formatDate(edu.startDate)} - ${formatDate(edu.endDate)}</span>
-                            <p>${edu.studyType} en ${edu.area}</p>
-                        </div>
-                    `).join('')}
-                </section>
-                
-                <section id="projects" class="container">
-                    <h2 class="section-title">Proyectos</h2>
-                    <p class="section-subtitle">Trabajos destacados y proyectos recientes</p>
-                    
-                    <div class="projects-grid">
-                        ${projects.map(project => `
-                            <div class="project-card">
-                                ${project.featured ? '<span class="project-badge">Destacado</span>' : ''}
-                                <div class="project-content">
-                                    <h3 class="project-title">${project.name}</h3>
-                                    <p class="project-description">${project.description}</p>
-                                    
-                                    <div class="project-highlights">
-                                        <ul>
-                                            ${project.highlights.map(highlight => `
-                                                <li>${highlight}</li>
-                                            `).join('')}
-                                        </ul>
+                    <section id="projects" class="section">
+                        <div class="container">
+                            <h2>Proyectos</h2>
+                            <div class="grid two-columns">
+                                ${projects.map(project => `
+                                    <div class="project-item">
+                                        <div class="project-content">
+                                            <div class="project-title">
+                                                <h3>${project.name}</h3>
+                                                ${project.featured ? '<span class="project-badge">Destacado</span>' : ''}
+                                            </div>
+                                            <div class="project-description">
+                                                ${project.description}
+                                            </div>
+                                            <div class="project-highlights">
+                                                <ul>
+                                                    ${project.highlights.map(highlight => `
+                                                        <li>${highlight}</li>
+                                                    `).join('')}
+                                                </ul>
+                                            </div>
+                                            <div class="project-technologies">
+                                                ${project.technologies.map(tech => `
+                                                    <span class="project-tech">${tech}</span>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+                                        <a href="${project.url}" target="_blank" class="project-link">Ver proyecto</a>
                                     </div>
-                                    
-                                    <div class="project-tech">
-                                        ${project.technologies.map(tech => `
-                                            <span class="tech-badge">${tech}</span>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                                <a href="${project.url}" target="_blank" class="project-link">Ver proyecto</a>
-                            </div>
-                        `).join('')}
-                    </div>
-                </section>
-                
-                <section id="contact" class="container">
-                    <h2 class="section-title">Contacto</h2>
-                    <p class="section-subtitle">¿Tienes algún proyecto en mente? ¡Hablemos!</p>
-                    
-                    <div class="contact-info">
-                        <div class="contact-list">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <strong>Email</strong>
-                                    <p><a href="mailto:${basics.email}">${basics.email}</a></p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <strong>Teléfono</strong>
-                                    <p><a href="tel:${basics.phone}">${basics.phone}</a></p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-globe"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <strong>Sitio Web</strong>
-                                    <p><a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a></p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <strong>Ubicación</strong>
-                                    <p>${basics.location.city}, ${basics.location.region}</p>
-                                </div>
+                                `).join('')}
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </main>
                 
                 <footer>
-                    <div class="container footer-content">
-                        <p class="footer-text">&copy; ${new Date().getFullYear()} ${basics.name} ${basics.last_name}. Todos los derechos reservados.</p>
-                        <div class="social-links">
-                            ${basics.profiles.map(profile => `
-                                <a href="${profile.url}" target="_blank" class="social-link" title="${profile.network}">
-                                    <i class="${getSocialIcon(profile.network)}"></i>
-                                </a>
-                            `).join('')}
-                        </div>
+                    <div class="container">
+                        <p>&copy; ${new Date().getFullYear()} ${basics.name} ${basics.last_name}</p>
                     </div>
                 </footer>
             `;
@@ -860,7 +516,7 @@
         // Iniciar la carga del portafolio
         loadPortfolioData();
         
-        // Actualizar periódicamente
+        // Actualizar periódicamente (cada 5 minutos)
         setInterval(loadPortfolioData, 5 * 60 * 1000);
     </script>
 </body>
