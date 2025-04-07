@@ -3,558 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
+    <title>Portafolio Profesional</title>
+    <meta name="description" content="Portafolio personal con experiencia en desarrollo web y diseño UI/UX">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #5e60ce;
-            --primary-light: #7400b8;
-            --gradient-1: #5e60ce;
-            --gradient-2: #6930c3;
-            --dark: #2b2d42;
-            --text: #374151;
-            --light-text: #6b7280;
-            --background: #f8f9fa;
-            --card: #ffffff;
-            --border: #e5e7eb;
-            --accent: #64dfdf;
-            --success: #06d6a0;
-            --max-width: 1100px;
+            /* Colores - Modo Claro */
+            --color-bg: #f9fafb;
+            --color-card: #ffffff;
+            --color-text: #1f2937;
+            --color-text-light: #6b7280;
+            --color-primary: #4f46e5;
+            --color-primary-light: #ebe9ff;
+            --color-border: #e5e7eb;
+            --color-badge: #f3f4f6;
+            --color-badge-text: #5a67d8;
+            --color-header: #ffffff;
+            --color-footer: #f3f4f6;
+            --color-link: #4f46e5;
+            --color-link-hover: #4338ca;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        
+
+        [data-theme="dark"] {
+            --color-bg: #111827;
+            --color-card: #1f2937;
+            --color-text: #f9fafb;
+            --color-text-light: #9ca3af;
+            --color-primary: #818cf8;
+            --color-primary-light: #312e81;
+            --color-border: #374151;
+            --color-badge: #374151;
+            --color-badge-text: #a5b4fc;
+            --color-header: #1f2937;
+            --color-footer: #1f2937;
+            --color-link: #818cf8;
+            --color-link-hover: #a5b4fc;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--background);
-            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
             line-height: 1.6;
-            font-weight: 300;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 25px;
-        }
-        
+
         a {
+            color: var(--color-link);
             text-decoration: none;
-            color: var(--primary);
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
-        
+
         a:hover {
-            color: var(--primary-light);
+            color: var(--color-link-hover);
         }
-        
-        /* Typography */
-        h1, h2, h3 {
-            font-family: 'DM Serif Display', serif;
-            font-weight: normal;
-            color: var(--dark);
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
-        
-        h1 {
-            font-size: 3.2rem;
-            line-height: 1.2;
-            margin-bottom: 8px;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        h2:after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            height: 4px;
-            width: 60px;
-            background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
-            border-radius: 2px;
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        /* Layout */
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section:nth-child(even) {
-            background-color: var(--card);
-        }
-        
+
         /* Header */
-        header {
-            padding: 180px 0 120px;
-            background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-2) 100%);
-            color: white;
-            margin-bottom: 80px;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        .site-header {
+            background-color: var(--color-header);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-        
+
         .header-content {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 60px;
-        }
-        
-        .header-text {
-            flex: 1.2;
-        }
-        
-        .header-image {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .header-title {
-            font-size: 4rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-        
-        .header-subtitle {
-            font-size: 1.4rem;
-            font-weight: 300;
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-        
-        .profile-pic {
-            width: 280px;
-            height: 280px;
-            border-radius: 16px;
-            object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .profile-pic:hover {
-            transform: translateY(-10px) rotate(2deg);
-            box-shadow: 0 25px 35px rgba(0, 0, 0, 0.25);
-        }
-        
-        .location {
-            display: inline-flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin-top: 20px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .location i {
-            margin-right: 8px;
-        }
-        
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .social-link:hover {
-            background-color: white;
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        /* About */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .about-card {
-            background-color: var(--card);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border);
-        }
-        
-        .about-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-        
-        .about-card-title {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .about-card-title i {
-            color: var(--primary);
-        }
-        
-        /* Skills */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .skill-card {
-            background-color: var(--card);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border);
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-        
-        .skill-header {
-            display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
         }
-        
-        .skill-header h3 {
-            margin-bottom: 0;
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--color-text);
         }
-        
-        .skill-type {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.7rem;
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--color-text);
             font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            position: relative;
         }
-        
-        .skill-type.hard {
-            background-color: rgba(94, 96, 206, 0.1);
-            color: var(--primary);
+
+        .nav-menu a:hover {
+            color: var(--color-primary);
         }
-        
-        .skill-type.soft {
-            background-color: rgba(100, 223, 223, 0.1);
-            color: var(--accent);
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-primary);
+            transition: width 0.3s ease;
         }
-        
-        .skill-tags {
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--color-badge);
+        }
+
+        .sun-icon, .moon-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .moon-icon {
+            display: block;
+        }
+
+        [data-theme="light"] .sun-icon {
+            display: block;
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* Hero Section */
+        .profile-section {
+            padding: 5rem 0 3rem;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--color-primary);
+            box-shadow: var(--shadow);
+        }
+
+        .profile-content {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .profile-role {
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .profile-summary {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        .contact-info {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
         }
-        
-        .skill-tag {
-            background-color: white;
-            border: 1px solid var(--border);
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-size: 0.9rem;
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text-light);
+        }
+
+        .contact-item i {
+            color: var(--color-primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-badge);
+            color: var(--color-text);
             transition: all 0.3s ease;
         }
-        
-        .skill-tag:hover {
-            background-color: var(--primary);
+
+        .social-link:hover {
+            background-color: var(--color-primary);
             color: white;
-            border-color: var(--primary);
-            transform: scale(1.05);
+            transform: translateY(-3px);
         }
-        
-        /* Education */
-        .timeline {
+
+        /* Section Styles */
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
             position: relative;
-            max-width: 800px;
-            margin: 40px auto 0;
-            padding-left: 30px;
-        }
-        
-        .timeline:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--gradient-1), var(--gradient-2));
-        }
-        
-        .education-item {
-            position: relative;
-            margin-bottom: 50px;
-            padding-bottom: 20px;
-        }
-        
-        .education-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .education-item:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -38px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            border: 4px solid var(--background);
-            box-shadow: 0 0 0 2px var(--primary-light);
-        }
-        
-        .education-title {
-            margin-bottom: 10px;
-        }
-        
-        .education-period {
             display: inline-block;
-            background-color: rgba(94, 96, 206, 0.1);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
         }
-        
-        /* Projects */
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--color-primary);
+            bottom: -8px;
+            left: 0;
+            border-radius: 3px;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--color-card);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            gap: 1.5rem;
         }
-        
+
         .project-card {
-            background-color: var(--card);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
             height: 100%;
-            border: 1px solid var(--border);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-card.featured {
-            border-top: 4px solid var(--success);
-        }
-        
-        .project-content {
-            padding: 25px;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
-        
+
         .project-header {
+            padding: 1.25rem;
+            padding-bottom: 0;
+        }
+
+        .project-title {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 0.75rem;
         }
-        
-        .project-badge {
-            background-color: rgba(6, 214, 160, 0.1);
-            color: var(--success);
-            padding: 5px 10px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 500;
+
+        .project-title h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
         }
-        
+
+        .project-title a {
+            color: var(--color-text);
+        }
+
+        .project-title a:hover {
+            color: var(--color-primary);
+        }
+
+        .external-link-icon {
+            width: 16px;
+            height: 16px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
         .project-description {
-            margin-bottom: 20px;
-            color: var(--light-text);
-            flex-grow: 1;
+            padding: 0 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-light);
+            font-size: 0.95rem;
         }
-        
+
         .project-highlights {
-            margin-bottom: 20px;
+            padding: 0 1.25rem 1.25rem;
+            list-style-position: inside;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
         }
-        
-        .project-highlights h4 {
-            font-size: 1rem;
-            margin-bottom: 10px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-        }
-        
-        .project-highlights ul {
-            padding-left: 20px;
-            color: var(--light-text);
-        }
-        
+
         .project-highlights li {
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
         }
-        
-        .project-tech {
+
+        .project-tags {
+            padding: 0 1.25rem 1.25rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 0.5rem;
             margin-top: auto;
-            margin-bottom: 10px;
         }
-        
-        .tech-pill {
-            background-color: rgba(94, 96, 206, 0.08);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            color: var(--primary);
-        }
-        
+
         .project-link {
-            display: block;
-            background-color: var(--card);
-            color: var(--dark);
-            padding: 15px;
+            padding: 0.75rem 1.25rem;
+            background-color: var(--color-badge);
+            color: var(--color-text);
             text-align: center;
             font-weight: 500;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--color-border);
             transition: all 0.3s ease;
-        }
-        
-        .project-link:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .contact-card {
-            background-color: var(--card);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border);
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-8px);
-        }
-        
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 1.5rem;
+            gap: 0.5rem;
+            margin-top: auto;
         }
-        
-        .contact-label {
+
+        .project-link:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* Skills Section */
+        .skills-card {
+            padding: 1.5rem;
+        }
+
+        .skills-section {
+            margin-bottom: 2rem;
+        }
+
+        .skills-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .skills-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
             font-weight: 500;
-            margin-bottom: 5px;
+            color: var(--color-text-light);
         }
-        
-        .contact-value {
-            color: var(--light-text);
+
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
-        
-        .contact-value a {
-            color: var(--primary);
+
+        /* Tags */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
         }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
+
+        .tag-default {
+            background-color: var(--color-badge);
+            color: var(--color-badge-text);
+        }
+
+        .tag-primary {
+            background-color: var(--color-primary);
             color: white;
-            padding: 40px 0;
-            margin-top: 80px;
         }
-        
+
+        .tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--color-footer);
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--color-border);
+        }
+
         .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .footer-text {
-            opacity: 0.8;
+
+        .copyright {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
         }
-        
+
         .footer-links {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
         }
-        
-        .footer-link {
-            color: white;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-link:hover {
-            opacity: 1;
-            color: white;
-        }
-        
+
         /* Loading Animation */
         .loading {
             display: flex;
@@ -562,77 +489,92 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
-            gap: 20px;
+            gap: 1.5rem;
         }
-        
+
         .loading-spinner {
             width: 50px;
             height: 50px;
-            border: 3px solid rgba(94, 96, 206, 0.2);
+            border: 3px solid rgba(79, 70, 229, 0.2);
             border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s linear infinite;
+            border-top-color: var(--color-primary);
+            animation: spin 1s infinite linear;
         }
-        
+
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        
-        /* Media Queries */
+
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            header {
-                padding: 120px 0 100px;
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--color-header);
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: var(--shadow);
+                border-top: 1px solid var(--color-border);
             }
-            
-            .header-content {
+
+            .nav-menu.active {
+                max-height: 300px;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu a {
+                padding: 1rem 1.5rem;
+                display: block;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .nav-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--color-text);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .profile-container {
                 flex-direction: column;
                 text-align: center;
             }
-            
-            .header-title {
-                font-size: 2.5rem;
+
+            .contact-info {
+                justify-content: center;
             }
-            
-            h1 {
-                font-size: 2.3rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .location {
-                margin: 20px auto 0;
-            }
-            
+
             .social-links {
                 justify-content: center;
             }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .timeline {
-                padding-left: 20px;
-            }
-            
-            .education-item:before {
-                left: -28px;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            h2:after {
+
+            .section-title::after {
                 left: 50%;
                 transform: translateX(-50%);
             }
-            
-            .section-header {
+
+            .section-title {
+                display: block;
+                text-align: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
                 text-align: center;
             }
         }
@@ -647,8 +589,8 @@
     </div>
 
     <script>
-        // URL del archivo JSON
-        const DATA_URL = 'https://raw.githubusercontent.com/edwinwmendeze/nrc-23731/refs/heads/main/grupo-a/src/data/profiles/PepePino.json';
+        // URL del archivo JSON en GitHub
+        const DATA_URL = 'https://raw.githubusercontent.com/edwinwmendeze/nrc-23731/refs/heads/main/grupo-a/src/data/profiles/EdwinMendez.json';
         
         // Formatear fechas
         function formatDate(dateString) {
@@ -659,7 +601,7 @@
             return date.toLocaleDateString('es-ES', options);
         }
         
-        // Obtener ícono para redes sociales
+        // Obtener icono para redes sociales
         function getSocialIcon(network) {
             const icons = {
                 'GitHub': 'fab fa-github',
@@ -684,16 +626,51 @@
                 
                 const data = await response.json();
                 renderPortfolio(data);
+                setupThemeToggle();
+                setupMobileMenu();
                 
             } catch (error) {
                 console.error('Error:', error);
                 document.getElementById('app').innerHTML = `
-                    <div class="container" style="padding-top: 100px; text-align: center;">
+                    <div class="container" style="padding-top: 5rem; text-align: center;">
                         <h2>Error al cargar el portafolio</h2>
-                        <p style="color: var(--light-text);">${error.message}</p>
+                        <p style="color: var(--color-text-light);">${error.message}</p>
                     </div>
                 `;
             }
+        }
+        
+        // Configurar el toggle del tema
+        function setupThemeToggle() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+        
+        // Configurar menú móvil
+        function setupMobileMenu() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
         }
         
         // Renderizar el portafolio
@@ -702,204 +679,215 @@
             document.title = `${basics.name} ${basics.last_name} | Portafolio`;
             
             const portfolioHTML = `
-                <header>
+                <header class="site-header">
                     <div class="container header-content">
-                        <div class="header-text">
-                            <h1 class="header-title">${basics.name} ${basics.last_name}</h1>
-                            <p class="header-subtitle">${basics.label}</p>
-                            <p>${basics.summary}</p>
-                            
-                            <div class="social-links">
-                                ${basics.profiles.map(profile => `
-                                    <a href="${profile.url}" target="_blank" class="social-link" aria-label="${profile.network}">
-                                        <i class="${getSocialIcon(profile.network)}"></i>
-                                    </a>
-                                `).join('')}
-                            </div>
-                            
-                            <div class="location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                ${basics.location.city}, ${basics.location.region}
-                            </div>
-                        </div>
+                        <a href="#" class="logo">${basics.name.charAt(0)}${basics.last_name.split(' ')[0].charAt(0)}</a>
                         
-                        <div class="header-image">
-                            <img src="${basics.image.remote || basics.image.local}" alt="${basics.name}" class="profile-pic">
+                        <nav>
+                            <button id="nav-toggle" class="nav-toggle">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            <ul class="nav-menu">
+                                <li><a href="#inicio">Inicio</a></li>
+                                <li><a href="#proyectos">Proyectos</a></li>
+                                <li><a href="#habilidades">Habilidades</a></li>
+                                <li><a href="#contacto">Contacto</a></li>
+                            </ul>
+                        </nav>
+                        
+                        <div class="header-actions">
+                            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+                                <i class="fas fa-sun sun-icon"></i>
+                                <i class="fas fa-moon moon-icon"></i>
+                            </button>
                         </div>
                     </div>
                 </header>
                 
-                <section id="about" class="section">
-                    <div class="container">
-                        <div class="section-header">
-                            <h2>Sobre mí</h2>
-                        </div>
-                        
-                        <div class="about-grid">
-                            <div class="about-card">
-                                <h3 class="about-card-title">
-                                    <i class="fas fa-envelope"></i>
-                                    Contacto
-                                </h3>
-                                <p><strong>Email:</strong> <a href="mailto:${basics.email}">${basics.email}</a></p>
-                                <p><strong>Teléfono:</strong> <a href="tel:${basics.phone}">${basics.phone}</a></p>
-                                <p><strong>Sitio web:</strong> <a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a></p>
-                            </div>
+                <main>
+                    <section id="inicio" class="profile-section">
+                        <div class="container profile-container">
+                            <img src="${basics.image.remote || basics.image.local}" alt="${basics.name}" class="profile-image">
                             
-                            <div class="about-card">
-                                <h3 class="about-card-title">
-                                    <i class="fas fa-user"></i>
-                                    Perfil
-                                </h3>
-                                <p>${basics.summary}</p>
-                            </div>
-                            
-                            <div class="about-card">
-                                <h3 class="about-card-title">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                    Ubicación
-                                </h3>
-                                <p><strong>Ciudad:</strong> ${basics.location.city}</p>
-                                <p><strong>Región:</strong> ${basics.location.region}</p>
-                                <p><strong>País:</strong> ${basics.location.countryCode}</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="skills" class="section">
-                    <div class="container">
-                        <div class="section-header">
-                            <h2>Habilidades</h2>
-                        </div>
-                        
-                        <div class="skills-container">
-                            ${skills.map(skill => `
-                                <div class="skill-card">
-                                    <div class="skill-header">
-                                        <h3>${skill.name}</h3>
-                                        <span class="skill-type ${skill.type}">${skill.type}</span>
-                                    </div>
-                                    <div class="skill-tags">
-                                        ${skill.keywords.map(keyword => `
-                                            <span class="skill-tag">${keyword}</span>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="education" class="section">
-                    <div class="container">
-                        <div class="section-header">
-                            <h2>Educación</h2>
-                        </div>
-                        
-                        <div class="timeline">
-                            ${education.map(edu => `
-                                <div class="education-item">
-                                    <h3 class="education-title">${edu.institution}</h3>
-                                    <span class="education-period">
-                                        ${formatDate(edu.startDate)} - ${formatDate(edu.endDate)}
-                                    </span>
-                                    <p>${edu.studyType} en ${edu.area}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="projects" class="section">
-                    <div class="container">
-                        <div class="section-header">
-                            <h2>Proyectos</h2>
-                        </div>
-                        
-                        <div class="projects-grid">
-                            ${projects.map(project => `
-                                <div class="project-card ${project.featured ? 'featured' : ''}">
-                                    <div class="project-content">
-                                        <div class="project-header">
-                                            <h3>${project.name}</h3>
-                                            ${project.featured ? '<span class="project-badge">Destacado</span>' : ''}
-                                        </div>
-                                        <p class="project-description">${project.description}</p>
-                                        
-                                        <div class="project-highlights">
-                                            <h4>Aspectos destacados:</h4>
-                                            <ul>
-                                                ${project.highlights.map(highlight => `
-                                                    <li>${highlight}</li>
-                                                `).join('')}
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="project-tech">
-                                            ${project.technologies.map(tech => `
-                                                <span class="tech-pill">${tech}</span>
-                                            `).join('')}
-                                        </div>
+                            <div class="profile-content">
+                                <h1 class="profile-name">${basics.name} ${basics.last_name}</h1>
+                                <p class="profile-role">${basics.label}</p>
+                                <p class="profile-summary">${basics.summary}</p>
+                                
+                                <div class="contact-info">
+                                    <div class="contact-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="mailto:${basics.email}">${basics.email}</a>
                                     </div>
                                     
-                                    <a href="${project.url}" target="_blank" class="project-link">
-                                        Ver proyecto <i class="fas fa-arrow-right"></i>
-                                    </a>
+                                    <div class="contact-item">
+                                        <i class="fas fa-phone"></i>
+                                        <a href="tel:${basics.phone}">${basics.phone}</a>
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <i class="fas fa-globe"></i>
+                                        <a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a>
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>${basics.location.city}, ${basics.location.region}</span>
+                                    </div>
                                 </div>
-                            `).join('')}
+                                
+                                <ul class="social-links">
+                                    ${basics.profiles.map(profile => `
+                                        <li>
+                                            <a href="${profile.url}" target="_blank" class="social-link" title="${profile.network}">
+                                                <i class="${getSocialIcon(profile.network)}"></i>
+                                            </a>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                    
+                    <section id="proyectos" class="section">
+                        <div class="container">
+                            <h2 class="section-title">Proyectos</h2>
+                            
+                            <div class="projects-grid">
+                                ${projects.map(project => `
+                                    <div class="card project-card">
+                                        <div class="project-header">
+                                            <div class="project-title">
+                                                <h3>
+                                                    <a href="${project.url}" target="_blank">
+                                                        ${project.name}
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="external-link-icon">
+                                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                                        </svg>
+                                                    </a>
+                                                </h3>
+                                                ${project.featured ? '<span class="tag tag-primary featured-tag">Destacado</span>' : ''}
+                                            </div>
+                                        </div>
+                                        
+                                        <p class="project-description">${project.description}</p>
+                                        
+                                        <ul class="project-highlights">
+                                            ${project.highlights.map(highlight => `
+                                                <li>${highlight}</li>
+                                            `).join('')}
+                                        </ul>
+                                        
+                                        <div class="project-tags">
+                                            ${project.technologies.map(tech => `
+                                                <span class="tag tag-default">${tech}</span>
+                                            `).join('')}
+                                        </div>
+                                        
+                                        <a href="${project.url}" target="_blank" class="project-link">
+                                            <i class="fas fa-external-link-alt"></i>
+                                            <span>Ver proyecto</span>
+                                        </a>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="habilidades" class="section">
+                        <div class="container">
+                            <h2 class="section-title">Habilidades</h2>
+                            
+                            <div class="card skills-card">
+                                <div class="skills-section">
+                                    <h3>Habilidades Técnicas</h3>
+                                    
+                                    ${skills.filter(skill => skill.type === 'hard').map(skill => `
+                                        <div class="skill-category">
+                                            <h4>${skill.name}</h4>
+                                            <div class="keywords">
+                                                ${skill.keywords.map(keyword => `
+                                                    <span class="tag tag-default">${keyword}</span>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                
+                                <div class="skills-section">
+                                    <h3>Habilidades Blandas</h3>
+                                    
+                                    ${skills.filter(skill => skill.type === 'soft').map(skill => `
+                                        <div class="skill-category">
+                                            <h4>${skill.name}</h4>
+                                            <div class="keywords">
+                                                ${skill.keywords.map(keyword => `
+                                                    <span class="tag tag-default">${keyword}</span>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="educacion" class="section">
+                        <div class="container">
+                            <h2 class="section-title">Educación</h2>
+                            
+                            <div class="card skills-card">
+                                ${education.map(edu => `
+                                    <div class="skills-section">
+                                        <h3>${edu.institution}</h3>
+                                        <p>${edu.studyType} en ${edu.area}</p>
+                                        <p style="color: var(--color-text-light);">${formatDate(edu.startDate)} - ${formatDate(edu.endDate)}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="contacto" class="section">
+                        <div class="container">
+                            <h2 class="section-title">Contacto</h2>
+                            
+                            <div class="card skills-card">
+                                <div class="contact-info" style="justify-content: flex-start; margin-bottom: 0;">
+                                    <div class="contact-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="mailto:${basics.email}">${basics.email}</a>
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <i class="fas fa-phone"></i>
+                                        <a href="tel:${basics.phone}">${basics.phone}</a>
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <i class="fas fa-globe"></i>
+                                        <a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a>
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>${basics.location.city}, ${basics.location.region}, ${basics.location.countryCode}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
                 
-                <section id="contact" class="section">
-                    <div class="container">
-                        <div class="section-header">
-                            <h2>Contacto</h2>
-                        </div>
-                        
-                        <div class="contact-grid">
-                            <div class="contact-card">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <h3 class="contact-label">Email</h3>
-                                <p class="contact-value"><a href="mailto:${basics.email}">${basics.email}</a></p>
-                            </div>
-                            
-                            <div class="contact-card">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <h3 class="contact-label">Teléfono</h3>
-                                <p class="contact-value"><a href="tel:${basics.phone}">${basics.phone}</a></p>
-                            </div>
-                            
-                            <div class="contact-card">
-                                <div class="contact-icon">
-                                    <i class="fas fa-globe"></i>
-                                </div>
-                                <h3 class="contact-label">Sitio Web</h3>
-                                <p class="contact-value"><a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a></p>
-                            </div>
-                            
-                            <div class="contact-card">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <h3 class="contact-label">Ubicación</h3>
-                                <p class="contact-value">${basics.location.city}, ${basics.location.region}</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <footer>
+                <footer class="site-footer">
                     <div class="container footer-content">
-                        <p class="footer-text">&copy; ${new Date().getFullYear()} ${basics.name} ${basics.last_name}. Todos los derechos reservados.</p>
+                        <p class="copyright">&copy; ${new Date().getFullYear()} ${basics.name} ${basics.last_name}. Todos los derechos reservados.</p>
+                        
                         <div class="footer-links">
                             ${basics.profiles.map(profile => `
-                                <a href="${profile.url}" target="_blank" class="footer-link" aria-label="${profile.network}">
+                                <a href="${profile.url}" target="_blank" title="${profile.network}">
                                     <i class="${getSocialIcon(profile.network)}"></i>
                                 </a>
                             `).join('')}
@@ -913,9 +901,6 @@
         
         // Iniciar la carga del portafolio
         loadPortfolioData();
-        
-        // Actualizar periódicamente (cada 5 minutos)
-        setInterval(loadPortfolioData, 5 * 60 * 1000);
     </script>
 </body>
 </html>
